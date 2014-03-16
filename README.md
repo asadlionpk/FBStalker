@@ -20,6 +20,9 @@ Check the live version here (may take down soon): http://fbstalk.cloudapp.net/
 * Now do "sudo node app.js" or simply "node app.js".
 * Open your browser and visit http://127.0.0.1/
 
+* I haven't added my own cron code. But I use an outside service to call /cron endpoint every minute.
+* You can use this method: http://www.labnol.org/internet/website-uptime-monitor/21060/ to ping, which will run the cron code and update the profile photos if any.
+
 Goodluck!
 
 
