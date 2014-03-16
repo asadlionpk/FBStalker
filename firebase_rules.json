@@ -1,0 +1,21 @@
+{
+    "rules": {
+      ".read": false,
+        "groups":{
+          "$pid": {
+            ".read": true
+            }
+        },
+        "photos":{
+          "$pid": {
+            ".read": true
+            }
+        },
+        "profiles":{
+          "$pid": {
+            ".read": true
+            }
+        }
+        
+    }
+}

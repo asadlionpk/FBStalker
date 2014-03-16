@@ -1,0 +1,19 @@
+{
+  "name": "FbStalk",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": ">= 0.0.0",
+    "firebase": "~1.0.5",
+    "btoa": "~1.1.1",
+    "atob": "~1.1.0",
+    "firebase-token-generator": "~0.1.4",
+    "sys": "0.0.1",
+    "http": "0.0.0",
+    "request": "~2.34.0",
+    "node-phantom": "~0.2.5"
+  },
+  "description": "FB Stalker",
+  "main": "app.js",
+  "license": "MIT",
+  "author": "Asad Memon"
+}

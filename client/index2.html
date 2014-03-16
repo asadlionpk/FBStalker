@@ -1,0 +1,24 @@
+<html>
+<head>
+	
+	<script src="zepto.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+	function add (profileurl) {
+		// post a JSON payload:
+		$.ajax({
+		  type: 'POST',
+		  url: '/add',
+		  // post payload:
+		  data: JSON.stringify({url:profileurl}),
+		  contentType: 'application/json',
+		  success:function (data) {
+		  	console.log(data);
+		  }
+		});
+	}
+</script>
+</body>
+</html>

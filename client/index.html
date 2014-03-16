@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Facebook Stalker</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+
+    <!-- FACEBOOK OPEN GRAPH -->
+    <meta property="og:title" content="Facebook Stalker - Automatic eyes on your crush" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://fbstalk.cloudapp.net/Spy.png" />
+    
+    <meta property="og:site_name" content="Facebook Stalker " />
+    <meta property="og:description" content="a facebook profile stalking app. What it does is, visit the profile of everyone on the stalk list every hour and check if the profile picture has been updated. If yes, it saves the URL to the profile picture for you to easily view later by visiting your list here. All previous profile pictures are also stored for you to see in an album form." />
+
+
+    <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+    <script type="text/javascript">
+      var heap=heap||[];heap.load=function(a){window._heapid=a;var b=document.createElement("script");b.type="text/javascript",b.async=!0,b.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d=function(a){return function(){heap.push([a].concat(Array.prototype.slice.call(arguments,0)))}},e=["identify","track"];for(var f=0;f<e.length;f++)heap[e[f]]=d(e[f])};
+      heap.load("1166106766");
+    </script>
+    
+</head>
+
+
+
+<body>
+
+    <div class="wrapper">
+        <div class="box">
+            <div class="row">
+
+
+                <!-- main right col -->
+                <div class="column col-sm-12 col-xs-12" id="main">
+
+                    <!-- top nav -->
+                    <div class="navbar navbar-blue navbar-static-top">
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="/" class="navbar-brand logo"><i class="glyphicon glyphicon-camera"></i></a>
+                        </div>
+                        <nav class="collapse navbar-collapse" role="navigation">
+
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="/"><i class="glyphicon glyphicon-home"></i> Home</a>
+                                </li>
+                                <li id="addprofile">
+                                    <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Add Profile</a>
+                                </li>
+                                <li id="badgetop">
+                                    <a href="#">
+                                        <span id="groupname" class="badge">...</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                    </div>
+                    <!-- /top nav -->
+
+                    <div class="padding">
+                        <div class="full col-sm-9">
+
+                            <!-- content -->
+                            <div class="row">
+
+                                <div class="row" id="index">
+
+                                    <div class="col-sm-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" id="">
+                                                <h3>Welcome!</h3>
+                                                <p>
+                                                <b>Problem:</b> Whenever your crush changes their photo, you lose access to the old profile photo (considering you two are not friends and privacy...).
+                                                <br><b>Solution:</b> Keep saving all the photos as they appear.
+                                                <br>
+                                                This is a facebook profile stalking app. What it does is, visit the profile of everyone on the stalk list every hour and check if the profile picture has been updated. If yes, it saves the URL to the profile picture for you to easily view later by visiting your list here. All previous profile pictures are also stored for you to see in an album form.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="well">
+                                            <form class="form">
+                                                <h4>Start Stalking</h4>
+                                                You need to create a stalklist first.
+                                                <b>OR
+                                                </b>Enter the name of list you created before.
+                                                <div class="input-group text-center">
+
+                                                    <input id="inpgroupname" type="text" class="form-control input-lg" placeholder="eg. johnlist">
+                                                    <span class="input-group-btn">
+                                                        <button id="button_creategroup" class="btn btn-lg btn-primary" type="button">GO</button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="panel panel-default">
+
+                                            <div class="panel-body" id="">
+                                                <h3>REMEMBER!</h3>
+                                                <p>The name of the list is your only way in or anyone else's way in. Lists are not password protected. So name them well.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+
+                                            <div class="panel-body" id="">
+                                                <h3>FAQ!</h3>
+                                                <p>
+                                                    <b>Only the profile picture?</b>
+                                                    <br>Yes, currently only indexing of the profile picture is supported. I will add more if this becomes worth it.
+                                                </p>
+                                                <p>
+
+                                                    <b>Where are images stored?</b>
+                                                    <br>I just index the URLs of the images on my server, the images are never saved to my server nor do I have space for all those selfies.
+                                                </p>
+                                                <p>
+
+
+                                                    <b>How does it work?</b>
+                                                    <br>I run a headless browser at my server. A cron is running which visits each of the profiles in everyones' stalk list and parses the profile picture and saves them. This was a weekend project for testing how quick it is to make something using <a target="_blank" href="http://www.firebase.com">Firebase</a> Service. I am impressed so far.
+
+                                                </p>
+                                                <p> <b>Who pays for the server?</b>
+                                                    <br>I do currently.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" id="groupview">
+
+                                    <div class="col-sm-12" id="emptygroup">
+
+                                        <div class="well">
+                                            <h4>Add a profile to this list now. Hit <b>Add Profile</b> at the top.</h4>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- main col right -->
+
+                            </div>
+                            <!--/row-->
+
+                            <div class="row" id="footer">
+
+                                <div class="col-sm-12 text-center">
+                                    <p>
+                                        ©Copyright 2014.
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+
+
+                        </div>
+                        <!-- /col-9 -->
+                    </div>
+                    <!-- /padding -->
+                </div>
+                <!-- /main -->
+
+            </div>
+        </div>
+    </div>
+
+    <div id="templates" class="hidden">
+        <div class="col-sm-6 profile" id="template-profile">
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><a href="#" target="_blank" id="linkviewall" class="pull-right">View Profile</a>
+                    <h4 id="name">John</h4>
+                </div>
+                <div class="panel-body" id="thumbcontainer">
+
+                </div>
+            </div>
+
+        </div>
+
+        <a id="template-imgthumb" href="#" target="_blank">
+            <img class="thumb" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/t1.0-1/c0.0.160.160/p160x160/1013992_10152246779798627_2050989875_n.jpg">
+        </a>
+    </div>
+
+    <!--post modal-->
+    <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    Add a Profile to this Stalk List
+                </div>
+                <div class="modal-body">
+                    <form class="form center-block">
+                        <div class="form-group">
+                            <input id="profurl" class="form-control input-lg" autofocus="" placeholder="Something like: https://www.facebook.com/mostlylisa"></input>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                        <button id="button_addprofile" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">STALK!</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+    <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+
+    <script src="main.js"></script>
+
+
+
+
+
+</body>
+
+</html>
